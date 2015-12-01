@@ -14,19 +14,19 @@
 	</div>
 	<div class="clearfix" style="height:50px"></div>
 	<div id="tables" 
-			style="overflow-x:scroll; white-space: nowrap; margin-bottom: 2px; height: 100%; padding-left: 30px;">
+			style="margin-bottom: 2px; height: 100%; padding-left: 30px;">
 		<div class="table-display" ng-repeat="file in files"
 			style="vertical-align:top; margin-right: 30px;"
-			ng-init="sortModes=['Map errors and gaps','Map by data types','Sort by values']; file.sortMode = sortModes[0]; sortFields(file);">
+			ng-init="sortModes=['Map errors and gaps','Map by data types','Sort by values']; file.sortMode = sortModes[0]; sortFields(file); file.displayType = true;">
 			<div class="table-header pull-left" style="margin-bottom: 7px; overflow:hidden; white-space: nowrap; display: inline-block; clear: both;">
 				<span class="labels" style="width:263px; display:inline-block">
 					<span class="table-label" style="font-weight: strong; font-size: larger">{{file.label}}</span>
 				</span>
-				<span style="width: 35px; padding: 5px">
-					<input type="checkbox" 
+				<span style="width: 35px; padding: 5px; display: inline-block;">
+					<!--<input type="checkbox" 
 						ng-model="file.displayType"
 						style="height: 16px; width: 16px;">
-					</input>
+					</input>-->
 				</span>
 				<span>
 					<span ng-repeat="mode in sortModes" style="margin-left: 10px; margin-right: 10px"
@@ -42,15 +42,15 @@
 					<div class="dimension-main" style="height: 35px; width: 263px; background-color: #eeeeee; padding: 5px; font-weight: lighter; display: inline-block;">
 						<div style="left: 5px; background-color: #eeeeee; padding-left: 5px; padding-right: 5px; border-radius: 4px"
 							ng-style="{ position: calcPosition(file) }">
-							<span class="pull-left" style="margin-top: 3px">{{field.description}}</span>
+							<span class="pull-left" style="margin-top: 3px">{{field.description}}{{field.mvDelimiter ? ' (M)' : ''}}</span>
 						</div>
-						<span class="dimension-specials pull-right">
+						<!--<span class="dimension-specials pull-right">
 							<div class="special-character" ng-repeat="special in field.special"
 								style="height: 25px; width: 25px; display: inline-block; margin-right: 2px; text-align: center; font-size: larger; font-weight: strong; border-radius: 4px;"
 								ng-style="{ 'background-color': field.unassignedSpecialChars.indexOf(special) !== -1 ? '#bbbbbb' : '#EC5D57' }">
 								{{special}}
 							</div>
-						</span>
+						</span>-->
 					</div>
 					<div style="width: 35px; height:35px; display: inline-block; margin-left: -2px; padding: 5px";
 						ng-style="{ 'background-color' : file.displayType ? colors[field.type] : '#eeeeee' }"
@@ -71,8 +71,7 @@
 							disabled
 							style="width:200px; margin:0px; height: 35px;"
 							ng-focus="clearArrowEffect()"
-							ng-change="field.sortedValues[file.editIndex].color = colorCalc(file.data[file.editIndex][field.key], file.sortMode === sortModes[0] ? 'edit' : 'type', field)"
-							ng-style="{ 'color': colorCalc(file.data[file.editIndex][field.key], file.sortMode === sortModes[0] ? 'edit' : 'type', field) }"></input>
+							ng-change="field.sortedValues[file.editIndex].color = colorCalc(file.data[file.editIndex][field.key], file.sortMode === sortModes[0] ? 'edit' : 'type', field)"></input>
 					</span>
 					<div style="height:35px; display: inline-block"
 						ng-style="{ 'margin-left': file.editIndex !== null && file.editIndex !== undefined ? '-200px' : '0px' }">
