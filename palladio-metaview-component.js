@@ -216,7 +216,7 @@ angular.module('palladioMetaview', ['palladio', 'palladio.services'])
 							if(field.type === 'ordinalNumeric' && sniff(value) === 'number') {
 								return scope.colors['ordinalNumeric'];
 							} else if (field.type === 'binary0' && field.uniqueValues && (value === field.uniqueValues[0] || value === field.uniqueValues[1])) {
-								return value === field.uniqueValues[0].key ? scope.colors['binary0'] : scope.colors['binary1'];
+								return value === field.uniqueValues[0] ? scope.colors['binary0'] : scope.colors['binary1'];
 							} else if ( (field.type === 'ordinalNumeric' || field.type === 'nominalText') && value && field.uniqueValues.indexOf(value.split(field.mvDelimiter)[0]) !== -1) {
 								return scope.colors[field.type];
 							} else {
