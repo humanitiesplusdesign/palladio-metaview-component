@@ -12,7 +12,7 @@ angular.module('palladioMetaview', ['palladio', 'palladio.services'])
 	.directive('palladioMetaview', function (palladioService, dataService, parseService, $document) {
 		return {
 			scope : true,
-			templateUrl : '../template.html',
+			templateUrl : 'bower_components/palladio-metaview-component/template.html',
 			link : {
 				pre : function(scope, element) {
 					scope.fileForArrowIndexChange = null;
