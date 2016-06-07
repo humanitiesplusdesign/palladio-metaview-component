@@ -12,7 +12,7 @@ angular.module('palladioMetaview', ['palladio', 'palladio.services'])
 	.directive('palladioMetaview', function (palladioService, dataService, parseService, $document) {
 		return {
 			scope : true,
-			templateUrl : 'bower_components/palladio-metaview-component/template.html',
+			templateUrl : 'partials/palladio-metaview-component/template.html',
 			link : {
 				pre : function(scope, element) {
 					scope.fileForArrowIndexChange = null;
@@ -180,8 +180,6 @@ angular.module('palladioMetaview', ['palladio', 'palladio.services'])
 					};
 					
 					scope.calcTop = function(tada) {
-						console.log(tada)
-						console.log($('body')[0].getBoundingClientRect().top);
 						return $('body')[0].getBoundingClientRect().top;
 					}
 
@@ -324,8 +322,6 @@ angular.module('palladioMetaview', ['palladio', 'palladio.services'])
 						if (isString(value)) return 'text';
 						return null;
 					};
-
-					console.log(scope.files);
 				}
 			}
 		};
